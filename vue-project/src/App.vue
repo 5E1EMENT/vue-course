@@ -1,33 +1,28 @@
 <template>
     <div class="container pt-2">
-        <h1>{{title}}</h1>
-        <hr>
-        <app-counter ></app-counter>
-        <app-second-counter ></app-second-counter>
-        <hr>
-        <app-actions ></app-actions>
+        <h1 v-colored:background.font="'red'">{{text}}</h1>
+        <h1 v-colored:color.delay="'blue'">{{text}}</h1>
+        <button >Жми</button>
+        <input type="text" v-model="color">
+        {{color}}
     </div>
 </template>
 
 <script>
 
-    import Counter from './counter'
-    import SecondCounter from './SecondCounter'
-    import Actions from './actions'
-    export default {
-
-        components: {
-            appCounter: Counter,
-            appActions: Actions,
-            appSecondCounter: SecondCounter
-        },
-        computed: {
-            title() {
-                return this.$store.getters.title
-            }
-        }
-
+export default {
+    data() {
+      return {
+        text: 'SOME TEXT',
+        color: 'red'
+      }
+    },
+    components: {
+    },
+    computed: {
     }
+
+}
 </script>
 
 <style scoped>
