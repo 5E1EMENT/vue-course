@@ -5,29 +5,20 @@
         <ul>
             <li v-for="(name,index) in filteredNames " :key="index">{{name}}</li>
         </ul>
+        <app-list></app-list>
     </div>
 </template>
 
 <script>
-
+  import ListMixin from './mixins/listMixin'
 export default {
   data() {
     return {
       text: 'Some Text',
       color: 'red',
-      searchName:'',
-      names: ['vlad', 'max', 'tanya', 'danik', 'polya']
     }
   },
-  components: {},
-  computed: {
-    filteredNames () {
-      return this.names.filter(name=> {
-        return name.toLowerCase().indexOf(this.searchName.toLowerCase()) !== -1
-      })
-    }
-
-  },
+  mixins: [ListMixin],
   filters: {
     lowercase(value) {
       return value.toLowerCase()
