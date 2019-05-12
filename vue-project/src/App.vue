@@ -23,7 +23,7 @@ export default {
   computed: {
     filteredNames () {
       return this.names.filter(name=> {
-        return name.indexOf(this.searchName) !== -1
+        return name.toLowerCase().indexOf(this.searchName.toLowerCase()) !== -1
       })
     }
 
