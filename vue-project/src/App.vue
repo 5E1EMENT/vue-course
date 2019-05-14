@@ -1,6 +1,6 @@
 <template>
   <div class="container pt-2">
-    <form action="" class="pt-3">
+    <form action="" class="pt-3" @submit.prevent="onSubmit">
       <div class="form-group">
         <label for="email">Email</label>
         <input
@@ -13,6 +13,7 @@
           >
         <div class="invalid-feedback" v-if="!$v.email.required">Email field is required</div>
         <div class="invalid-feedback" v-if="!$v.email.email">This field should be an email</div>
+        <div class="invalid-feedback" v-if="!$v.email.uniqueEmail">This email is already exists</div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -44,6 +45,9 @@
         </div>
 
       </div>
+      <button type="submit"
+              class="btn btn-success"
+              :disabled="$v.$invalid">Submit</button>
     </form>
   </div>
 </template>
@@ -58,10 +62,23 @@
         confirmPassword: ''
       }
     },
+    methods: {
+      onSubmit() {
+        console.log('Email', this.email, 'Pass',this.password)
+      }
+    },
     validations: {
       email: {
         required,
-        email
+        email,
+        uniqueEmail: function(newEmail) {
+          return new Promise((resolve,reject) => {
+            setTimeout(()=> {
+              const value = newEmail !== 'test@mail.ru';
+              resolve(value)
+            },1000)
+          })
+        }
       },
       password: {
         minLength: minLength(6)
@@ -69,11 +86,7 @@
       confirmPassword: {
         sameAs: sameAs('password')
       }
-      // confirmPassword: {
-      //   sameAs: sameAs((vue) => {
-      //     return vue.password
-      //   })
-      // }
+
     }
   }
 </script>
