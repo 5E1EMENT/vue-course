@@ -1,33 +1,38 @@
 <template>
-    <div class="container pt-2">
-        <h1>{{title}}</h1>
-        <hr>
-        <app-counter ></app-counter>
-        <app-second-counter ></app-second-counter>
-        <hr>
-        <app-actions ></app-actions>
-    </div>
+  <div class="container pt-2">
+    <form action="" class="pt-3">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          :class="{'is-invalid': $v.email.$error}"
+          v-model="email"
+          @blur="$v.email.$touch()"
+          >
+        <div class="invalid-feedback" v-if="!$v.email.required">Email field is required</div>
+        <div class="invalid-feedback" v-if="!$v.email.email">This field should be an email</div>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
-
-    import Counter from './counter'
-    import SecondCounter from './SecondCounter'
-    import Actions from './actions'
-    export default {
-
-        components: {
-            appCounter: Counter,
-            appActions: Actions,
-            appSecondCounter: SecondCounter
-        },
-        computed: {
-            title() {
-                return this.$store.getters.title
-            }
-        }
-
+  import {required, email} from 'vuelidate/lib/validators'
+  export default {
+    data() {
+      return {
+        email: ''
+      }
+    },
+    validations: {
+      email: {
+        required,
+        email
+      }
     }
+  }
 </script>
 
 <style scoped>
