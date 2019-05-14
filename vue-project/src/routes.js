@@ -1,10 +1,17 @@
 import VueRouter from 'vue-router'
 import home from './pages/home'
-import cars from './pages/cars'
+// import cars from './pages/cars'
 import car from './pages/car'
 import errorCmp from './pages/Error'
 import CarFull from './pages/CarFull'
 
+const Cars = resolve => {
+  require.ensure(['./pages/cars.vue'], () => {
+    resolve(
+      require('./pages/cars')
+    )
+  })
+}
 
 export default new VueRouter({
   routes: [
@@ -14,7 +21,7 @@ export default new VueRouter({
     },
     {
       path: '/cars', // localhost:8080/cars
-      component: cars,
+      component: Cars,
       name: 'cars'
     },
     {
