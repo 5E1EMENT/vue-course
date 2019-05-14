@@ -32,6 +32,15 @@
       $route (toR, fromR) {
         this.id = toR.params['id']
       }
+    },
+    beforeRouteLeave (to, fromR, next) {
+      console.log('beforeRouterLeave')
+      if(window.confirm('Are you sure you want to leave this page')) {
+        next()
+      } else {
+        next(false)
+      }
+
     }
   }
 </script>
