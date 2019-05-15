@@ -1,44 +1,14 @@
 {
   "cars": [
     {
-      "name": "Ford",
-      "year": 2018,
+      "name": "BMW",
+      "year": 2019,
       "id": 1
     },
     {
-      "name": "Bugatti",
-      "year": 2015,
+      "name": "Mazda",
+      "year": 2013,
       "id": 2
-    },
-    {
-      "name": "Lamborgini",
-      "year": 2022,
-      "id": 3
-    },
-    {
-      "name": "Toyota",
-      "year": 2011,
-      "id": 4
-    },
-    {
-      "name": "VAZ",
-      "year": 1970,
-      "id": 5
-    },
-    {
-      "name": "VAZ",
-      "year": 1970,
-      "id": 6
-    },
-    {
-      "name": "VOLGA",
-      "year": 1970,
-      "id": 7
-    },
-    {
-      "name": "dan",
-      "year": 2018,
-      "id": 8
     }
   ]
 }
