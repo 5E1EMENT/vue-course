@@ -18,7 +18,6 @@
   export default {
     data () {
       return {
-        title: 'Some text'
       }
     },
     components: {
@@ -26,7 +25,11 @@
       appActions: Actions,
       appSecondCounter: SecondCounter
     },
-    computed: {}
+    computed: {
+      title () {
+        return this.$store.getters.title
+      }
+    }
 
   }
 </script>
